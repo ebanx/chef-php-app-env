@@ -4,7 +4,6 @@ default[:php_app_env] = {}
 # 
 # "php_app_env": {
 #   "my_app": {
-#     "path_to_env_file": "webroot",
 #     "env_vars": {
 #       "environment": "production",
 #       "DB_URI": "mysql://..."

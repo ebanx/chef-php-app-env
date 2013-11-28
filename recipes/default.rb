@@ -3,7 +3,7 @@ node[:deploy].each do |application, deploy|
   if node[:php_app_env].has_key? application.to_s
     app_cfg = node[:php_app_env][application.to_s]
 
-    template "#{deploy[:deploy_to]}/current/#{app_cfg[:path_to_env_file]}/env.php" do
+    template "#{deploy[:deploy_to]}/shared/config/env.php" do
       source "env.php.erb"
       owner deploy[:user] 
       group deploy[:group]
@@ -16,7 +16,7 @@ node[:deploy].each do |application, deploy|
       )
 
       only_if do
-        File.directory?("#{deploy[:deploy_to]}/current/#{app_cfg[:path_to_env_file]}")
+        File.directory?("#{deploy[:deploy_to]}/shared/config")
       end
     end
   end
